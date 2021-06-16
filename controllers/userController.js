@@ -11,3 +11,7 @@ exports.getAllUsers=catchAsync(async(req,res,next)=>{
    })
 
 });
+
+exports.findAllUsers=async()=>{
+    return await User.find({});
+}
