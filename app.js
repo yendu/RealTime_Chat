@@ -9,10 +9,15 @@ const AppError = require('./utils/appError');
 app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname,'public')))
 app.use(express.json({ limit: '10kb' })); 
-app.use('/v1/user',userRouter);
+
+app.use('/v1/user',(req,res,next)=>{
+   console.log('router')
+   console.log(req);
+},userRouter);
 app.use('/v1/message',messageRouter)
 
 app.all('*',(req,res,next)=>{
+   // console.log(req)
    next(new AppError('Cant find the url',404));
 })
 

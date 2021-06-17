@@ -41,7 +41,9 @@ exports.login=catchAsync(async(req,res,next)=>{
 
 exports.signup = catchAsync(async (req, res, next) => {
     
+    console.log("called");
     const newUser = await User.create(req.body);
+    console.log(newUser);
 
 
     createSendToken(newUser, 201, res);

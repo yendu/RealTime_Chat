@@ -71,6 +71,7 @@ const sendErrorProd = (err, req, res) => {
 
 module.exports = (err, req, res, next) => {
     // Default Status Code & Status
+    // console.log(req)
     err.statusCode = err.statusCode || 500;
     err.status = err.status || 'error';
 

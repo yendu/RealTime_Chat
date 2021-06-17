@@ -14,14 +14,18 @@ const userSchema = new mongoose.Schema({
         lowercase: true,
         validate: [validator.isEmail, 'Provide a valid email']
     },
+    firebaseId:{
+        type:String,
+        required:[true,'Id is required']
+    },
     photo: {
         type: String,
         default: 'default.jpg'
     },
     password: {
         type: String,
-        required: [true, 'Password is required'],
-        minlength: [8, 'Password must have minimum of 8 characters'],
+        required: [false, 'Password is required'],
+        minlength: [2, 'Password must have minimum of 8 characters'],
         select: false // Won't show up in output
     },
    

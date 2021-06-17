@@ -8,14 +8,16 @@ const messageController=require('./controllers/messageController')
 
 dotenv.config({path:'./config.env'});
 const app=require('./app');
-const { Socket } = require('dgram');
+
 
 
 
 mongoose.connect(process.env.DATABASE_LOCAL,{
     useNewUrlParser:true,
     useCreateIndex:true,
-    useFindAndModify:false
+    useFindAndModify:false,
+    
+
 }).then(()=>console.log('Connected successfully'));
 
 // const server=httpServer.createServer((req,res)=>{
@@ -27,6 +29,7 @@ mongoose.connect(process.env.DATABASE_LOCAL,{
 //     console.log("Server started ");
 // });
 const server=httpServer.createServer(app)
+
 const io=new Server(server)
 
 io.on('connection',(socket)=>{
@@ -46,6 +49,7 @@ io.on('connection',(socket)=>{
         
     })
 })
+
 server.listen(process.env.PORT,()=>{
     console.log("Server Started");
 })
